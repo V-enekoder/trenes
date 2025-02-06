@@ -1,4 +1,4 @@
-package database
+package config
 
 import (
 	"context"
@@ -10,7 +10,7 @@ import (
 	"github.com/neo4j/neo4j-go-driver/v5/neo4j"
 )
 
-func getDatabaseConnection(ctx context.Context) (neo4j.SessionWithContext, error) {
+func GetDatabaseConnection(ctx context.Context) (neo4j.SessionWithContext, error) {
 	err := godotenv.Load()
 	if err != nil {
 		log.Fatal("Error loading .env file")
