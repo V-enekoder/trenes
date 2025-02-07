@@ -1,0 +1,130 @@
+Id	name	line	typestation	system
+1	Propatria	1	Normal	Metro de Caracas
+2	Perez Bonalde	1	Normal	Metro de Caracas
+3	Plaza Sucre	1	Normal	Metro de Caracas
+4	Gato Negro1	1	Transferencia	Metro de Caracas
+5	Agua Salud1	1	Transferencia	Metro de Caracas
+6	Caño Amarillo	1	Normal	Metro de Caracas
+7	Capitolio	1	Transferencia	Metro de Caracas
+8	La Hoyada	1	Transferencia	Metro de Caracas
+9	Parque Carabobo	1	Normal	Metro de Caracas
+10	Bellas Artes	1	Normal	Metro de Caracas
+11	Colegio de Ingenieros	1	Normal	Metro de Caracas
+12	Sabana Grande	1	Normal	Metro de Caracas
+13	Chacaito	1	Normal	Metro de Caracas
+14	Chacao	1	Normal	Metro de Caracas
+15	Altamira	1	Normal	Metro de Caracas
+16	Los dos Caminos	1	Transferencia	Metro de Caracas
+17	Los cortijos	1	Normal	Metro de Caracas
+18	La California	1	Normal	Metro de Caracas
+19	Petare	1	Normal	Metro de Caracas
+20	Palo verde	1	Normal	Metro de Caracas
+21	Parque Del Este1	1	Transferencia	Metro de Caracas
+22	Plaza Venezuela1	1	Transferencia	Metro de Caracas
+23	El silencio 	2	Transferencia	Metro de Caracas
+24	Capuchinos2	2	Transferencia	Metro de Caracas
+25	Maternidad2	2	Transferencia	Metro de Caracas
+26	Artigas2	2	Transferencia	Metro de Caracas
+27	La paz2	2	Transferencia	Metro de Caracas
+28	La Yaguara2	2	Transferencia	Metro de Caracas
+29	Carapita2	2	Transferencia	Metro de Caracas
+30	Antímano2	2	Transferencia	Metro de Caracas
+31	Mamera2	2	Transferencia	Metro de Caracas
+32	Caricuao	2	Normal	Metro de Caracas
+33	Zoológico	2	Transferencia	Metro de Caracas
+34	Plaza Venezuela	3	Transferencia	Metro de Caracas
+35	Ciudad Universitaria	3	Normal	Metro de Caracas
+36	Los Simbolos	3	Normal	Metro de Caracas
+37	La Bandera	3	Normal	Metro de Caracas
+38	El Valle	3	Transferencia	Metro de Caracas
+39	Jardines	3	Normal 	Metro de Caracas
+40	Coche	3	Normal	Metro de Caracas
+41	Mercado	3	Normal	Metro de Caracas
+42	La Rinconada	3	Transferencia	Metro de Caracas
+43	Prado De Maria	3	Normal	Metro de Caracas
+44	El Peaje	3	Normal	Metro de Caracas
+45	San Agustin	3	Normal	Metro de Caracas
+46	Fuerzas Armadas	3	Transferencia	Metro de Caracas
+47	Urdaneta3	3	Transferencia	Metro de Caracas
+48	San Jose	3	Normal	Metro de Caracas
+49	Las Adjuntas	4	Transferencia	Metro de Caracas
+50	Ruiz Pineda	4	Normal	Metro de Caracas
+51	Mamera4	4	Transferencia	Metro de Caracas
+52	Antímano4	4	Transferencia	Metro de Caracas
+53	Carapita4	4	Transferencia	Metro de Caracas
+54	La Yaguara4	4	Transferencia	Metro de Caracas
+55	La paz4	4	Transferencia	Metro de Caracas
+56	Artigas4	4	Transferencia	Metro de Caracas
+57	Maternidad4	4	Transferencia	Metro de Caracas
+58	Capuchinos4	4	Transferencia	Metro de Caracas
+59	Teatros	4	Normal	Metro de Caracas
+60	Nuevo Circo	4	Transferencia	Metro de Caracas
+61	Parque Central	4	Transferencia	Metro de Caracas
+62	Zona Rental	4	Transferencia	Metro de Caracas
+63	Bello Monte	4	Normal	Metro de Caracas
+64	Las Mercedes	4	Normal	Metro de Caracas
+65	Tamanaco4	4	Transferencia	Metro de Caracas
+66	Chuao4	4	Transferencia	Metro de Caracas
+67	Bello Campo	4	Normal	Metro de Caracas
+68	Parque Del Este4	4	Transferencia	Metro de Caracas
+69	El Hatillo	5	Normal	Metro de Caracas
+70	Los Geranios	5	Normal	Metro de Caracas
+71	La Boyera	5	Normal	Metro de Caracas
+72	La Trinidad	5	Normal	Metro de Caracas
+73	Baruta	5	Normal	Metro de Caracas
+74	Iglesia	5	Normal	Metro de Caracas
+75	Prados del Este	5	Normal	Metro de Caracas
+76	La Ciudadela	5	Normal	Metro de Caracas
+77	Santa Fe	5	Normal	Metro de Caracas
+78	San Román	5	Normal	Metro de Caracas
+79	Tamanaco5	5	Transferencia	Metro de Caracas
+80	Chuao5	5	Transferencia	Metro de Caracas
+81	Santa Marta	5	Normal	Metro de Caracas
+82	San Luis	5	Normal	Metro de Caracas
+83	Santa Paula	5	Normal	Metro de Caracas
+84	Santa Ana	5	Normal	Metro de Caracas
+85	Los Magallanes	6	Normal	Metro de Caracas
+86	Gato Negro6	6	Transferencia	Metro de Caracas
+87	Agua Salud6	6	Transferencia	Metro de Caracas
+88	Miraflores	6	Normal	Metro de Caracas
+89	Urdaneta6	6	Transferencia	Metro de Caracas
+90	San Bernardino	6	Normal	Metro de Caracas
+91	Guaicaipuro	6	Normal	Metro de Caracas
+92	Mariperez	6	Normal	Metro de Caracas
+93	Las Palmas	6	Normal	Metro de Caracas
+94	Chapellín	6	Normal	Metro de Caracas
+95	La Castellana	6	Normal	Metro de Caracas
+96	Ávila	6	Normal	Metro de Caracas
+97	Santa Eduvigis	6	Normal	Metro de Caracas
+98	Monte Cristo	6	Transferencia	Metro de Caracas
+99	Boleíta	6	Normal	Metro de Caracas
+100	Horizonte	6	Normal	Metro de Caracas
+101	La Urbina Sur	6	Normal	Metro de Caracas
+102	La Urbina   	6	Transferencia	Metro de Caracas
+103	Parque Del Este6	6	Transferencia	Metro de Caracas
+104	Las Adjuntas7	7	Transferencia	Metro Los Teques
+105	El Tambor	7	Normal	Metro Los Teques
+106	Casco Central l	7	Normal	Metro Los Teques
+107	Casco Central ll	7	Normal	Metro Los Teques
+108	Los Cerritos	7	Normal	Metro Los Teques
+109	Carrizal	7	Normal	Metro Los Teques
+110	Las Minas	7	Normal	Metro Los Teques
+111	San Antonio	7	Normal	Metro Los Teques
+112	La Urbina8	8	Transferencia	Metro Guarenas-Guatire
+113	Caucaguita	8	Transferencia	Metro Guarenas-Guatire
+114	Tamarindo	8	Normal	Metro Guarenas-Guatire
+115	Guarenas l	8	Normal	Metro Guarenas-Guatire
+116	Guarenas ll	8	Normal	Metro Guarenas-Guatire
+117	Guatire l	8	Normal	Metro Guarenas-Guatire
+118	Guatire ll	8	Normal	Metro Guarenas-Guatire
+119	José Félix Ribas	1	Metro Cable	Metro de Caracas
+120	El Carmen 	1	Metro Cable	Metro de Caracas
+121	Los Rosales	3	Metro Cable	Metro de Caracas
+122	Cementerio 	3	Metro Cable	Metro de Caracas
+123	Los Mangos	3	Metro Cable	Metro de Caracas
+124	San Agustín	4	Metro Cable	Metro de Caracas
+125	El Junquito	4	Metro Cable	Metro de Caracas
+126	Mariches	8	Metro Cable	Metro Guarenas-Guatire
+127	Charallave Cúa	3	Estación IAFE	Terminal Caracas
+128	Simón Bolívar	6	Estación IAFE	Aeropuerto Internacional
+129	La Vega	2	Metro Cable	Metro de Caracas
