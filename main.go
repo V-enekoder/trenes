@@ -30,7 +30,7 @@ func main() {
 			"message": "pong",
 		})
 	})
-	station.SetupRoutes(r)
+	station.RegisterRoutes(r)
 
 	r.Run()
 
