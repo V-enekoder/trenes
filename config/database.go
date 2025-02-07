@@ -19,8 +19,6 @@ func GetDatabaseConnection(ctx context.Context) (neo4j.SessionWithContext, error
 	uri := os.Getenv("URI")
 	username := os.Getenv("NEO4J_USERNAME")
 	password := os.Getenv("PASSWORD")
-
-	fmt.Print(uri, "\n", username, "\n", password, "\n")
 	driver, err := neo4j.NewDriverWithContext(uri, neo4j.BasicAuth(username, password, ""))
 	if err != nil {
 		return nil, fmt.Errorf("error al crear el driver: %w", err)

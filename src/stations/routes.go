@@ -4,7 +4,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func SetupRoutes(router *gin.Engine) {
+func RegisterRoutes(router *gin.Engine) {
 	stations := router.Group("/stations")
 	{
 		stations.POST("/", CreateStationController)

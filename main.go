@@ -2,10 +2,12 @@ package main
 
 import (
 	"context"
-	"fmt"
 	"log"
 
 	"github.com/V-enekoder/trenes/config"
+	station "github.com/V-enekoder/trenes/src/stations"
+	"github.com/gin-contrib/cors"
+	"github.com/gin-gonic/gin"
 )
 
 func main() {
@@ -17,7 +19,13 @@ func main() {
 	}
 	defer session.Close(ctx)
 
-	result, err := session.Run(ctx, "MATCH (e:Estacion) RETURN e.Id AS id, e.name AS name, e.line AS line, e.typestation AS typestation, e.system AS system", nil)
+	r := gin.Default()
+	r.Use(cors.Default())
+	station.RegisterRoutes(r)
+
+	r.Run()
+
+	/*result, err := session.Run(ctx, "MATCH (e:Estacion) RETURN e.Id AS id, e.name AS name, e.line AS line, e.typestation AS typestation, e.system AS system", nil)
 	if err != nil {
 		log.Fatalf("Error al ejecutar la consulta: %v", err)
 	}
@@ -37,5 +45,5 @@ func main() {
 	// Verifica si hubo algún error durante la iteración
 	if err = result.Err(); err != nil {
 		log.Fatalf("Error en los resultados: %v", err)
-	}
+	}*/
 }
