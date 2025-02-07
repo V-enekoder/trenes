@@ -10,6 +10,8 @@ import (
 	"github.com/neo4j/neo4j-go-driver/v5/neo4j"
 )
 
+var SESSION neo4j.SessionWithContext
+
 func GetDatabaseConnection(ctx context.Context) (neo4j.SessionWithContext, error) {
 	err := godotenv.Load()
 	if err != nil {
@@ -29,7 +31,7 @@ func GetDatabaseConnection(ctx context.Context) (neo4j.SessionWithContext, error
 		return nil, fmt.Errorf("error de conexión: %w", err)
 	}
 
-	session := driver.NewSession(ctx, neo4j.SessionConfig{})
+	SESSION = driver.NewSession(ctx, neo4j.SessionConfig{})
 
-	return session, nil
+	return SESSION, nil
 }
