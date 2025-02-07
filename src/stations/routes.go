@@ -12,6 +12,6 @@ func RegisterRoutes(router *gin.Engine) {
 		stations.GET("/", GetAllStationsController)
 		stations.PUT("/:id", UpdateStationController)
 		stations.DELETE("/:id", DeleteStationController)
-		stations.GET("/ruta-optima/:start_id/:end_id", FindOptimalRoadController)
+		stations.GET("/ruta-optima/:start_id/:end_id", FindOptimalPathController)
 	}
 }

@@ -12,7 +12,8 @@ import (
 func createStationRepository(ctx context.Context, estacion Station) error {
 	session := config.SESSION
 
-	_, err := session.Run(ctx, "CREATE (e:Estacion {Id: $id, name: $name, line: $line, typestation: $typestation, system: $system})",
+	cypher := `CREATE (e:Estacion {Id: $id, name: $name, line: $line, typestation: $typestation, system: $system})`
+	_, err := session.Run(ctx, cypher,
 		map[string]interface{}{
 			"id":          estacion.ID,
 			"name":        estacion.Name,
@@ -30,7 +31,8 @@ func createStationRepository(ctx context.Context, estacion Station) error {
 func getStationByIdRepository(ctx context.Context, id int64) (*Station, error) {
 	session := config.SESSION
 
-	result, err := session.Run(ctx, "MATCH (e:Estacion {Id: $id}) RETURN e", map[string]interface{}{"id": id})
+	cypher := `MATCH (e:Estacion {Id: $id}) RETURN e`
+	result, err := session.Run(ctx, cypher, map[string]interface{}{"id": id})
 	if err != nil {
 		return nil, fmt.Errorf("error ejecutando la consulta: %w", err)
 	}
@@ -54,7 +56,8 @@ func getStationByIdRepository(ctx context.Context, id int64) (*Station, error) {
 func getAllStationsRepository(ctx context.Context) ([]*Station, error) {
 	session := config.SESSION
 
-	result, err := session.Run(ctx, "MATCH (e:Estacion) RETURN e", nil)
+	cypher := `MATCH (e:Estacion) RETURN e`
+	result, err := session.Run(ctx, cypher, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error ejecutando la consulta: %w", err)
 	}
@@ -84,7 +87,9 @@ func getAllStationsRepository(ctx context.Context) ([]*Station, error) {
 func UpdateStationRepository(ctx context.Context, estacion Station) error {
 	session := config.SESSION
 
-	_, err := session.Run(ctx, "MATCH (e:Estacion {Id: $id}) SET e.name = $name, e.line = $line, e.typestation = $typestation, e.system = $system",
+	cypher := `MATCH (e:Estacion {Id: $id})
+	SET e.name = $name, e.line = $line, e.typestation = $typestation, e.system = $system`
+	_, err := session.Run(ctx, cypher,
 		map[string]interface{}{
 			"id":          estacion.ID,
 			"name":        estacion.Name,
@@ -103,10 +108,40 @@ func UpdateStationRepository(ctx context.Context, estacion Station) error {
 func DeleteStationRepository(ctx context.Context, id int64) error {
 	session := config.SESSION
 
-	_, err := session.Run(ctx, "MATCH (e:Estacion {Id: $id}) DETACH DELETE e", map[string]interface{}{"id": id})
+	cypher := `MATCH (e:Estacion {Id: $id}) DETACH DELETE e`
+	_, err := session.Run(ctx, cypher, map[string]interface{}{"id": id})
 	if err != nil {
 		return fmt.Errorf("error eliminando la estación: %w", err)
 	}
 
 	return nil
+}
+
+func findOptimalPathRepository(ctx context.Context, startID, endID int64) (op OptimalPath, err error) {
+	session := config.SESSION
+
+	cypher := `MATCH (start:Estacion {Id: $startID}) MATCH (end:Estacion {Id: $endID})
+		CALL apoc.algo.dijkstra(start, end, 'CONNECTS_TO', 'distance')
+		YIELD path, weight
+		RETURN REDUCE(s = [], n IN nodes(path) | s + n.name) AS nombres_estaciones, weight
+	`
+	result, err := session.Run(ctx, cypher, map[string]interface{}{"startID": startID, "endID": endID})
+	if err != nil {
+		err = fmt.Errorf("error ejecutando Dijkstra: %w", err)
+		return op, err
+	}
+
+	if result.Next(ctx) {
+		record := result.Record()
+		op.Path = record.Values[0].([]interface{}) // path es un arreglo con el nombre de los nodos
+		for _, v := range op.Path {
+			log.Println(v)
+		}
+		op.Weight = record.Values[1].(float64)
+		op.Time = op.Weight / 90
+
+		return op, err
+	}
+	err = fmt.Errorf("no se encontró ruta entre las estaciones %d y %d", startID, endID)
+	return op, err
 }
