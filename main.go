@@ -4,20 +4,43 @@ import (
 	"context"
 	"fmt"
 	"log"
+	"net/http"
 
 	"github.com/V-enekoder/trenes/config"
+	station "github.com/V-enekoder/trenes/src/stations"
+	"github.com/gin-contrib/cors"
+	"github.com/gin-gonic/gin"
+	"github.com/neo4j/neo4j-go-driver/v5/neo4j"
 )
 
 func main() {
 	ctx := context.Background()
-
 	session, err := config.GetDatabaseConnection(ctx)
 	if err != nil {
 		log.Fatal(err)
 	}
 	defer session.Close(ctx)
 
-	result, err := session.Run(ctx, "MATCH (e:Estacion) RETURN e.Id AS id, e.name AS name, e.line AS line, e.typestation AS typestation, e.system AS system", nil)
+	// TODO: Execute code
+	r := gin.Default()
+	r.Use(cors.Default())
+
+	r.GET("/ping", func(c *gin.Context) {
+		c.JSON(http.StatusOK, gin.H{
+			"message": "pong",
+		})
+	})
+	station.SetupRoutes(r)
+
+	r.Run()
+
+	// test(session, ctx)
+}
+
+func test(session neo4j.SessionWithContext, ctx context.Context) {
+	query := `MATCH (e:Estacion)
+		RETURN e.Id AS id, e.name AS name, e.line AS line, e.typestation AS typestation, e.system AS system`
+	result, err := session.Run(ctx, query, nil)
 	if err != nil {
 		log.Fatalf("Error al ejecutar la consulta: %v", err)
 	}
