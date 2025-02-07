@@ -7,7 +7,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func FindOptimalRoadController(c *gin.Context) {
+func FindOptimalPathController(c *gin.Context) {
 	startIDStr := c.Param("start_id") // Corregido: usar nombres de parámetros distintos
 	startID, err := strconv.ParseInt(startIDStr, 10, 64)
 	if err != nil {
@@ -22,13 +22,13 @@ func FindOptimalRoadController(c *gin.Context) {
 		return
 	}
 
-	path, weight, err := FindOptimalRoadService(c, startID, endID) // Pasa el contexto
+	optimal, err := FindOptimalPathService(c, startID, endID) // Pasa el contexto
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
 	}
 
-	c.JSON(http.StatusOK, gin.H{"path": path, "weight": weight})
+	c.JSON(http.StatusOK, gin.H{"data": optimal})
 }
 
 // Controlador para crear una estación

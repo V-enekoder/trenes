@@ -3,10 +3,6 @@ package station
 import (
 	"context"
 	"fmt"
-	// "log"
-
-	"github.com/V-enekoder/trenes/config"
-	"github.com/neo4j/neo4j-go-driver/v5/neo4j"
 )
 
 // Servicio para crear una estación
@@ -54,29 +50,6 @@ func DeleteStationService(ctx context.Context, id int64) error {
 	return nil
 }
 
-func FindOptimalRoadService(ctx context.Context, startID, endID int64) (neo4j.Path, float64, error) {
-	session := config.SESSION
-
-	result, err := session.Run(ctx, `
-		MATCH (start:Estacion {Id: $startID})
-		MATCH (end:Estacion {Id: $endID})
-		CALL apoc.algo.dijkstra(start, end, 'CONNECTS_TO', 'distance')
-		YIELD path, weight
-		RETURN path, weight
-	`, map[string]interface{}{"startID": startID, "endID": endID})
-	if err != nil {
-		return neo4j.Path{}, 0, fmt.Errorf("error ejecutando Dijkstra: %w", err)
-	}
-
-	if result.Next(ctx) {
-		record := result.Record()
-		path, ok := record.Values[0].(neo4j.Path) // path es un slice de interfaces
-		// log.Println(record.Values[0].(neo4j.Path))
-		weight := record.Values[1].(float64)
-		if ok {
-			return path, weight, nil
-		}
-	}
-
-	return neo4j.Path{}, 0, fmt.Errorf("no se encontró ruta entre las estaciones %d y %d", startID, endID)
+func FindOptimalPathService(ctx context.Context, startID, endID int64) (OptimalPath, error) {
+	return findOptimalPathRepository(ctx, startID, endID)
 }
